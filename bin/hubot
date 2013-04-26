@@ -1,7 +1,10 @@
 #!/bin/sh
 
-npm install
+# don't install if NOINSTALL is set (heroku will complain about the npm install directive here.)
+if [ -z $HUBOT_NOINSTALL ]
+  then
+  npm install
+fi
 export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
 exec node_modules/.bin/hubot "$@"
-

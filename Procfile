@@ -1,1 +1,1 @@
-web: bin/hubot -a campfire -n heartbot
+web: bin/hubot -a campfire -n heartbot -l hubot
