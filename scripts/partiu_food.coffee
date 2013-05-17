@@ -10,10 +10,10 @@ goToFucking = [
   "Go to fucking ",
   "I think you're hungry, go to ",
   "Starving? go to ",
-  "Stop asking me this shit and go just go to ",
+  "Stop asking me this shit and just go to ",
   "I'm getting tired of this, just go to ",
   "FOOD! ME HUNGRY! go to and bring me something back from fucking ",
-  "Don't fuck me, be a man go drinking instead!",
+  "Don't fuck me, be a man and go drinking instead!",
 ]
 
 foodPlaces = [
@@ -44,12 +44,12 @@ module.exports = (robot) ->
     robot.brain.data.partiuFood.pictures = robot.brain.data.partiuFood.pictures || {}
     for place in data.partiuFood.places then do (place) ->
       foodPlaces.push(place)
-  
+
   robot.respond /.*(add|remember) (food|place|restaurant) (.+)/i, (msg) ->
     place = msg.match[3]
     robot.brain.data.partiuFood.places.push(place)
     msg.send "Ok, I'll remember " + place + "."
-  
+
   robot.respond /.*(add|remember) (picture|photo|image)(\s?for)?(\s?food|place|restaurant)? (.+) (.+)/i, (msg) ->
     place=msg.match[5]
     pic=msg.match[6]
@@ -58,14 +58,14 @@ module.exports = (robot) ->
     pictures.push(pic)
     robot.brain.data.partiuFood.pictures[place] = pictures
     msg.send "Ok, I added that picture to "+ place + "."
-  
+
   robot.respond /.*(forget|remove) (food|place|restaurant) (.+)/i, (msg) ->
     findplace = msg.match[3]
     robot.brain.data.partiuFood.places = robot.brain.data.partiuFood.places.filter (place) ->
       place isnt findplace
     delete robot.brain.data.partiuFood.pictures[findplace]
     msg.send "Ok, I've removed " + findplace + "."
-  
+
   robot.respond /.*(partiu|fucking random|where).*?(is|should we go (for)?)? (food|lunch).*/i, (msg) ->
     prefix = msg.random(goToFucking)
     suffix = msg.random(foodPlaces) unless prefix.match("drinking")
