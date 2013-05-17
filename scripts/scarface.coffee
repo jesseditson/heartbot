@@ -23,5 +23,5 @@ tonyQuotes = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /.*(tony|scarface|montana).*/i, (msg) ->
+  robot.hear /.*(tony|scarface|montana).*/i, (msg) ->
     msg.send msg.random tonyQuotes
