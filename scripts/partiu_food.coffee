@@ -38,7 +38,7 @@ foodPlaces = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /.*(partiu|fucking random) (food).*/i, (msg) ->
+  robot.respond /.*(partiu|fucking random|where)?.*?(is|should we go (for)?)? (food|lunch).*/i, (msg) ->
     prefix = msg.random(goToFucking)
     suffix = msg.random(foodPlaces) unless prefix.match("drinking")
     suffix ||= ""
