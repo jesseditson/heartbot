@@ -64,6 +64,7 @@ module.exports = function(robot){
     } else {
       robot.brain.data.autotranslate = false
     }
+    msg.send("Auto Translate is now " + (robot.brain.data.autotranslate ? 'on' : 'off') + '.')
     if(robot.brain.data.autotranslate && robot.brain.data.lastSaid.all && robot.brain.data.lastSaid.all.length){
       var toTranslate = robot.brain.data.lastSaid.all.length
       var responses = []
