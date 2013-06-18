@@ -7,7 +7,21 @@
 #   hubot mustache me <url> - Adds a mustache to the specified URL.
 #   hubot mustache me <query> - Searches Google Images for the specified query and mustaches it.
 
+pornMode = false
+
 module.exports = (robot) ->
+  # load safe search:
+  robot.brain.on 'loaded', (data) =>
+    pornMode = robot.brain.data.pornmode
+  robot.hear /.*(porn\s?mode|safe\s?search)\s?(on|off)?/i, (msg) ->
+    if msg.match[2]
+      toggle = if msg.match[2] == 'on' then true else false
+      robot.brain.data.pornmode = toggle
+    else 
+      toggle = robot.brain.data.pornmode
+    state = if toggle then 'ENGAGED' else 'DISENGAGED'
+    msg.send "PORN MODE " + state + "."
+  
   robot.respond /(image|img)( me)? (.*)/i, (msg) ->
     imageMe msg, msg.match[3], (url) ->
       msg.send url
@@ -30,9 +44,11 @@ module.exports = (robot) ->
 imageMe = (msg, query, animated, faces, cb) ->
   cb = animated if typeof animated == 'function'
   cb = faces if typeof faces == 'function'
-  q = v: '1.0', rsz: '8', q: query, safe: 'active'
+  safe = if pornMode then 'off' else 'active'
+  q = v: '1.0', rsz: '8', q: query, safe: safe
   q.imgtype = 'animated' if typeof animated is 'boolean' and animated is true
   q.imgtype = 'face' if typeof faces is 'boolean' and faces is true
+  
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
     .query(q)
     .get() (err, res, body) ->
