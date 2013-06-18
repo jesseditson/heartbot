@@ -12,13 +12,14 @@ pornMode = false
 module.exports = (robot) ->
   # load safe search:
   robot.brain.on 'loaded', (data) =>
-    pornMode = robot.brain.data.pornmode
+    pornMode = robot.brain.data.pornmode && robot.brain.data.pornmode.engaged || pornMode
   robot.hear /.*(porn\s?mode|safe\s?search)\s?(on|off)?/i, (msg) ->
     if msg.match[2]
       toggle = if msg.match[2] == 'on' then true else false
-      robot.brain.data.pornmode = toggle
+      robot.brain.data.pornmode = robot.brain.data.pornmode || {}
+      robot.brain.data.pornmode.engaged = toggle
     else 
-      toggle = robot.brain.data.pornmode
+      toggle = robot.brain.data.pornmode.engaged
     state = if toggle then 'ENGAGED' else 'DISENGAGED'
     msg.send "PORN MODE " + state + "."
   
