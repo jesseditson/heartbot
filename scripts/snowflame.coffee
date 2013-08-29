@@ -19,10 +19,10 @@ module.exports = (robot) ->
   robot.respond /(snowflame)( me)? (.*)/i, (msg) ->
     term = msg.match[3]
     if /^http/.test(term)
-      msg.send "http://snowflamer.herokuapp.com/" + encodeURIComponent(msg)
+      msg.send "http://snowflamer.herokuapp.com/" + encodeURIComponent(term) + "#.png"
     else
       imageMe msg, term, (url) ->
-        msg.send "http://snowflamer.herokuapp.com/" + encodeURIComponent(url)
+        msg.send "http://snowflamer.herokuapp.com/" + encodeURIComponent(url) + "#.png"
 
 imageMe = (msg, query, cb) ->
   q = v: '1.0', rsz: '8', q: query, safe: 'active'
