@@ -25,7 +25,7 @@ module.exports = (robot) ->
         msg.send "http://snowflamer.herokuapp.com/" + encodeURIComponent(url) + "#.png"
 
 imageMe = (msg, query, cb) ->
-  q = v: '1.0', rsz: '8', q: query, safe: 'active'
+  q = v: '1.0', rsz: '8', q: query, safe: 'off'
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
     .query(q)
     .get() (err, res, body) ->
