@@ -16,13 +16,16 @@
 
 module.exports = (robot) ->
 
-  robot.respond /(snowflame)( me)? (.*)/i, (msg) ->
-    term = msg.match[3]
+  robot.respond /(pony\s?)?(snowflame)(\s?pony)?( me)? (.*)/i, (msg) ->
+    term = msg.match[5]
+    host = "http://snowflamer.herokuapp.com/"
+    if msg.match[1] || msg.match[3]
+      host += "pony/"
     if /^http/.test(term)
-      msg.send "http://snowflamer.herokuapp.com/" + encodeURIComponent(term) + "#.png"
+      msg.send host + encodeURIComponent(term) + "#.png"
     else
       imageMe msg, term, (url) ->
-        msg.send "http://snowflamer.herokuapp.com/" + encodeURIComponent(url) + "#.png"
+        msg.send host + encodeURIComponent(url) + "#.png"
 
 imageMe = (msg, query, cb) ->
   q = v: '1.0', rsz: '8', q: query, safe: 'off'
