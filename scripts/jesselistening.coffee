@@ -14,7 +14,7 @@
 #   what's/what is Jesse listening to?
 #   what song is this?
 
-pattern = /what(('s| is) jesse listening to| song is this| is this song)\??/i
+pattern = /what( the fuck)?(('s| is) (this shit )?jesse (is )?listening to| song is this| is this song)\??/i
 
 module.exports = (robot) ->
   robot.hear pattern, (msg) ->
