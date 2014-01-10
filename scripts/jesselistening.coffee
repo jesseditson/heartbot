@@ -19,8 +19,6 @@ pattern = /what(('s| is) jesse listening to| song is this| is this song)\??/i
 module.exports = (robot) ->
   robot.hear pattern, (msg) ->
     respondWithTrackName(msg)
-  robot.respond pattern, (msg) ->
-    respondWithTrackName(msg)
     
 respondWithTrackName = (msg) ->
   url = 'http://www.last.fm/user/Synnister/now'
