@@ -25,7 +25,11 @@ respondWithTrackName = (msg) ->
   msg.http(url).get() (err,res,body) ->
     infoMatch = body.match(/data-page-title.+?>([^<]+)/i)
     if infoMatch
-      info = infoMatch[1].replace(" (now playing) - Last.fm","")
-      msg.send "Jesse is listening to #{info}"
+      if /last played track/.test(infoMatch[1])
+        msg.send "Jesse doesn't seem to be listening to music right now."
+      else
+        info = infoMatch[1].replace(" (now playing) - Last.fm","")
+        msg.send "Jesse is listening to #{info}"
     else
-      msg.send "Jesse doesn't seem to be listening to music right now."
+      msg.send "I have no idea, I can't read the Last.fm now page."
+      
