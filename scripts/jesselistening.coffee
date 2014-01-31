@@ -32,4 +32,3 @@ respondWithTrackName = (msg) ->
         msg.send "Jesse is listening to #{info}"
     else
       msg.send "I have no idea, I can't read the Last.fm now page."
-      
