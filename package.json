@@ -32,7 +32,9 @@
     "underscore": "~1.4.4",
     "underscore.string": "~2.3.1",
     "wolfram": "~0.2.6",
-    "yelp": "~0.1.1"
+    "yelp": "~0.1.1",
+    "picture-tube": "0.0.4",
+    "request": "~2.33.0"
   },
   "engines": {
     "node": ">= 0.8.x",
