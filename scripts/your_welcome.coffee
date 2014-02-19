@@ -16,17 +16,19 @@ welcome = [
 ]
 
 angry = [
-  "Fuck you too",
-  "Yeah, you suck",
-  "Fuck you",
-  "Screw you"
+  "Fuck you too, <user>",
+  "Yeah, you suck, <user>",
+  "Fuck you <user>",
+  "Screw you <user>",
+  "<user>: shut up",
+  "<user>: fuck you"
 ]
 
 module.exports = (robot) ->
   robot.hear /.*\s?(thank(s| you)|th?a?n?ks)([^\w]|$)/i, (msg) ->
     msg.send msg.random welcome
 
-  robot.hear /.*(fuck|screw|stupid).*(heart\s*bot|HB)/i, (msg) ->
+  robot.hear /.*(fuck|screw|stupid|shut).*(heart\s*bot|HB)/i, (msg) ->
     if msg.match[1]
       anger msg
       
@@ -35,4 +37,4 @@ module.exports = (robot) ->
       anger msg
 
 anger = (msg) ->
-  msg.send (msg.random angry) + ", " + msg.message.user.name
+  msg.send (msg.random angry).replace("<user>",msg.message.user.name)
