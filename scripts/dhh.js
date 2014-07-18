@@ -33,11 +33,14 @@ var tweets = function(cb){
   });
 }
 
-module.exports = function(robot){
-  robot.respond(/dhh/i,function(msg){
-    tweets(function(err,tweets){
-      if(err) return msg.send('error: ',err.message);
-      msg.send(msg.random(tweets));
-    });
+var sendTweet = function(msg){
+  tweets(function(err,tweets){
+    if(err) return msg.send('error: ',err.message);
+    msg.send(msg.random(tweets));
   });
+}
+
+module.exports = function(robot){
+  robot.respond(/dhh/i,sendTweet);
+  robot.hear(/rails/i,sendTweet);
 }
