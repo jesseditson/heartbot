@@ -1,5 +1,5 @@
 // Description:
-//   Translates the last thing said using google translate ajax apis.
+//   Shit DHH says.
 //
 // Dependencies:
 //   None
@@ -8,14 +8,10 @@
 //   None
 //
 // Commands:
-//   translate (that) - automatically translates the last thing said to english.
-//   translate (person) - automatically translates the last thing a person said to english.
-//   english (please) - same as above
+//   dhh - shit dhh says
 //
 // Author:
 //   Jesse Ditson (@jesseditson)
-
-console.log('DHHHH');
 
 var Twit = require('twit')
 
