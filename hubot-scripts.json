@@ -45,5 +45,6 @@
   "whoisout.coffee",
   "wikipedia.coffee",
   "wolfram.coffee",
-  "yelp.coffee"
+  "yelp.coffee",
+  "graphite.coffee"
 ]
