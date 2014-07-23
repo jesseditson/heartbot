@@ -1,4 +1,4 @@
-# Description: 
+# Description:
 #   Bombs with emoji
 #
 # Commands:
@@ -13,6 +13,7 @@ emojimap = {
 
 module.exports = (robot) ->
   robot.hear /([^\s]+)\s*bomb\s*(\d+)?/i, (msg) ->
+    return false
     bombthing = msg.match[1]
     num = parseInt msg.match[2], 10
     num = 200 if isNaN num
