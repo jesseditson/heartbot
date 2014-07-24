@@ -14,12 +14,15 @@
 #   what's/what is Jesse listening to?
 #   what song is this?
 
+silly = require '../lib/silly'
+
 pattern = /what( the fuck)?(('s| is) (this shit )?jesse (is )?(listening to|playing)| song is this| is this song)\??/i
 
 module.exports = (robot) ->
   robot.hear pattern, (msg) ->
+    silly msg
     respondWithTrackName(msg)
-    
+
 respondWithTrackName = (msg) ->
   url = 'http://www.last.fm/user/Synnister/now'
   msg.http(url).get() (err,res,body) ->

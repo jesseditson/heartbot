@@ -5,6 +5,9 @@
 # Thanks to Kimono Labs for giving me the JSON to get the images
 #
 #
+
+silly = require '../lib/silly'
+
 images = [
   "http://33.media.tumblr.com/75ad65b40e42b9bb0a487d29467e84f3/tumblr_n8f721uO1M1tga27vo1_1280.jpg",
   "http://37.media.tumblr.com/6892659fd667d73d9fc395d3b95cff36/tumblr_n8f5ep7d051tga27vo1_1280.jpg",
@@ -70,4 +73,5 @@ images = [
 
 module.exports = (robot) ->
   robot.hear /.*(fail).*/i, (msg) ->
+    silly msg
     msg.send msg.random images

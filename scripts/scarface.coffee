@@ -22,6 +22,9 @@ tonyQuotes = [
   "You wanna fuck with me? Okay. You wanna play rough? Okay. Say hello to my little friend!"
 ]
 
+silly = require '../lib/silly'
+
 module.exports = (robot) ->
   robot.hear /.*(tony|scarface|montana).*/i, (msg) ->
+    silly msg
     msg.send msg.random tonyQuotes

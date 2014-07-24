@@ -12,6 +12,8 @@
 # Commands:
 #   'test' - when heartbot hears 'test', it shows an image about testing in production.
 
+silly = require '../lib/silly'
+
 images = [
   "http://assets.diylol.com/hfs/033/22b/769/resized/the-most-interesting-man-in-the-world-meme-generator-i-don-t-always-test-my-code-but-when-i-do-i-do-it-in-production-b3ead1.jpg",
   "http://www.troll.me/images/chuck-norris/testing-is-for-wimps-real-men-test-in-production.jpg",
@@ -32,4 +34,5 @@ images = [
 
 module.exports = (robot) ->
   robot.hear /(test|production|staging)/i, (msg) ->
+    silly msg
     msg.send msg.random images

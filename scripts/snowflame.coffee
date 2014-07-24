@@ -14,9 +14,12 @@
 #   snowflame <url> - puts snowflame on an image
 #   snowflame <term> - searches for a term and puts snowflame on it.
 
+silly = require '../lib/silly'
+
 module.exports = (robot) ->
 
   robot.respond /(pony\s?)?(snowflame)(\s?pony)?( me)? (.*)/i, (msg) ->
+    silly msg
     term = msg.match[5]
     host = "http://snowflamer.herokuapp.com/"
     if msg.match[1] || msg.match[3]

@@ -14,18 +14,21 @@
 # Commands:
 #   Skip this song
 
+silly = require '../lib/silly'
+
 pattern = /skip (this )?song/i
 
 module.exports = (robot) ->
-  
+
   robot.hear pattern, (msg) ->
+    silly msg
     skipSong(msg)
-    
+
   robot.respond /(skip.*)/i, (msg) ->
-    console.log(msg)
+    silly msg
     unless pattern.test(msg.match[1])
       skipSong(msg)
-    
+
 skipSong = (msg) ->
   username = msg.message.user.name
   url = 'http://skipsong.herokuapp.com/skip?user=' + username

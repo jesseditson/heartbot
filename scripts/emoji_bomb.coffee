@@ -6,6 +6,8 @@
 #   hubot :trollface: bomb 2000
 #
 
+silly = require '../lib/silly'
+
 emojimap = {
   ":trollface:" : /^troll/,
   ":heart: :yellow_heart: :green_heart: :blue_heart: :purple_heart:" : /^(heart|rainbow)/
@@ -13,6 +15,7 @@ emojimap = {
 
 module.exports = (robot) ->
   robot.hear /([^\s]+)\s*bomb\s*(\d+)?/i, (msg) ->
+    silly msg
     return false
     bombthing = msg.match[1]
     num = parseInt msg.match[2], 10
