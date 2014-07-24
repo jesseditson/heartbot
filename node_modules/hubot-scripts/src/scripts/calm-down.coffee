@@ -1,6 +1,9 @@
 # Description:
 #   Calm down
 #
+# Configuration:
+#   HUBOT_LESS_MANATEES
+#
 # Commands:
 #   hubot calm me | manatee me - Reply with Manatee
 #   calm down | simmer down | that escalated quickly - Reply with Manatee
@@ -13,14 +16,11 @@ module.exports = (robot) ->
 
   robot.respond /manatee|calm( me)?/i, (msg) -> msg.send manatee()
 
-  robot.hear ///
-    (calm down)|
-    (simmer down)|
-    (that escalated quickly)
-  ///i, (msg) -> msg.send manatee()
+  robot.hear /calm down|simmer down|that escalated quickly/i, (msg) ->
+    msg.send manatee()
 
   unless process.env.HUBOT_LESS_MANATEES
     robot.hear ///
-      (([A-Z]{2,}\s+)([A-Z]{2,})\s?)|
-      ([A-Z]{5,})
+      (\b([A-Z]{2,}\s+)([A-Z]{2,})\b)|
+      (\b[A-Z]{5,}\b)
     ///, (msg) -> msg.send manatee()

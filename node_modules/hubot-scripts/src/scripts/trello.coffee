@@ -11,11 +11,13 @@
 #
 # Commands:
 #   hubot trello card <name> - Create a new Trello card
+#   hubot trello show - Show cards on list
 #
 # Notes:
 #   To get your key, go to: https://trello.com/1/appKey/generate
 #   To get your token, go to: https://trello.com/1/authorize?key=<<your key>>&name=Hubot+Trello&expiration=never&response_type=token&scope=read,write
-#   To get your list ID, go to: https://trello.com/1/members/my/cards?key=<<your key>>&token=<<your token>> and find a card on the list you'd like to use. The ID is the idList attribute
+#   Figure out what board you want to use, grab it's id from the url (https://trello.com/board/<<board name>>/<<board id>>)
+#   To get your list ID, go to: https://trello.com/1/boards/<<board id>>/lists?key=<<your key>>&token=<<your token>>  "id" elements are the list ids.
 #
 # Author:
 #   carmstrong
@@ -35,6 +37,9 @@ module.exports = (robot) ->
     if not (process.env.HUBOT_TRELLO_KEY and process.env.HUBOT_TRELLO_TOKEN and process.env.HUBOT_TRELLO_LIST)
       return
     createCard msg, cardName
+    
+  robot.respond /trello show/i, (msg) ->
+    showCards msg
 
 createCard = (msg, cardName) ->
   Trello = require("node-trello")
@@ -44,3 +49,14 @@ createCard = (msg, cardName) ->
       msg.send "There was an error creating the card"
       return
     msg.send data.url
+
+showCards = (msg) ->
+  Trello = require("node-trello")
+  t = new Trello(process.env.HUBOT_TRELLO_KEY, process.env.HUBOT_TRELLO_TOKEN)
+  t.get "/1/lists/"+process.env.HUBOT_TRELLO_LIST, {cards: "open"}, (err, data) ->
+    if err
+      msg.send "There was an error showing the list."
+      return
+
+    msg.send "Cards in " + data.name + ":"
+    msg.send "- " + card.name for card in data.cards

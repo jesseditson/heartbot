@@ -5,12 +5,13 @@
 #   "tumblrbot": "0.1.0"
 #
 # Configuration:
-#   HUBOT_TUMBLR_API_TOKEN
+#   HUBOT_TUMBLR_API_KEY - A Tumblr OAuth Consumer Key will work fine
 #
 # Commands:
 #   hubot gif me - Returns a random gif from a random blog
 #   hubot food mosh - Returns a random gif from foodmosh.tumblr.com
 #   hubot fluxmachine - Returns a random gif from fluxmachine.tumblr.com
+#   hubot android - Returns a random gif from milosrajkovic.tumblr.com
 #   hubot nic cage me - Returns a random gif from gifolas-cage.tumblr.com
 #
 # Author:
@@ -21,6 +22,7 @@ SOURCES = {
   "foodmosh.tumblr.com": /(food)( mosh)?( me)?/i
   "fluxmachine.tumblr.com": /(flux)( ?machine)?( me)?/i
   "gifolas-cage.tumblr.com": /(nic )?cage( me)?/i
+  "milosrajkovic.tumblr.com": /(android )( me)?/i
 }
 
 getGif = (blog, msg) ->

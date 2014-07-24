@@ -20,7 +20,7 @@ module.exports = (robot) ->
     mtaMe msg
 
 mtaMe = (msg) ->
-  msg.http('http://mta.info/status/serviceStatus.txt')
+  msg.http('http://web.mta.info/status/serviceStatus.txt')
   .get() (err, res, body) ->
     if err
       throw err
@@ -30,14 +30,21 @@ mtaMe = (msg) ->
         throw err
       re = new RegExp(msg.match[1], 'gi')
       if msg.match[1].length is 1 or msg.match[1].toUpperCase() is 'SIR'
-        for k in res.service.subway[0].line
-          str = k.name[0]
-          if str.match(re)
-            if k.status[0] == 'GOOD SERVICE'
-              msg.send 'the ' + str + ' train is ok!'
-            else if k.status[0] == 'PLANNED WORK'
-              msg.send 'heads up, the ' + str + ' train has planned work.'
-            else
-              msg.send 'the ' + str + ' train is all kinds of messed up'
+        for j in res.service.subway
+          for k in j.line
+            if k.name.length > 0
+              str = k.name[0]
+              if str.match(re)
+                switch k.status
+                  when "GOOD SERVICE"
+                    msg.send "the #{str} train is ok!"
+                  when "PLANNED WORK"
+                    msg.send "heads up, the #{str} train has planned work (updated #{k.Time})"
+                  when "SERVICE CHANGE"
+                    msg.send "the #{str} train has service changes (updated #{k.Time})"
+                  when "DELAYS"
+                    msg.send "the #{str} train is delayed (updated #{k.Time})"
+                  else
+                    msg.send "the #{str} train status is #{k.status}"
       else
-        msg.send 'thats not a valid subway line!'
+        msg.send "that's not a valid subway line!"

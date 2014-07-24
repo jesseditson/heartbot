@@ -1,6 +1,5 @@
 [
   "redis-brain.coffee",
-  "tweet.coffee",
   "shipit.coffee",
   "ackbar.coffee",
   "adult.coffee",
@@ -12,14 +11,12 @@
   "bees.coffee",
   "buscemi.coffee",
   "calm-down.coffee",
-  "carlton.coffee",
   "corgime.coffee",
   "dealwithit.coffee",
   "dice.coffee",
   "email.coffee",
   "emoji.coffee",
   "facepalm.coffee",
-  "faceup.coffee",
   "fuck_yeah_nouns.coffee",
   "github-pulls.coffee",
   "haters.coffee",
@@ -44,6 +41,5 @@
   "wat.coffee",
   "whoisout.coffee",
   "wikipedia.coffee",
-  "wolfram.coffee",
   "yelp.coffee"
 ]
