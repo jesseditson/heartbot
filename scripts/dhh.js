@@ -42,5 +42,5 @@ var sendTweet = function(msg){
 
 module.exports = function(robot){
   robot.respond(/dhh/i,sendTweet);
-  robot.hear(/rails/i,sendTweet);
+  robot.hear(/rails.*FAIL/i,sendTweet);
 }
