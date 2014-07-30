@@ -37,7 +37,8 @@
     "request": "~2.33.0",
     "twit": "~1.1.15",
     "ntwitter": "~0.5.0",
-    "wolfram-alpha": "~0.1.1"
+    "wolfram-alpha": "~0.1.1",
+    "cleverbot-node": "~0.1.8"
   },
   "engines": {
     "node": ">= 0.8.x",
