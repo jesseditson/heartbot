@@ -9,12 +9,10 @@
   "aww.coffee",
   "base64.coffee",
   "bees.coffee",
-  "buscemi.coffee",
   "calm-down.coffee",
   "corgime.coffee",
   "dealwithit.coffee",
   "dice.coffee",
-  "email.coffee",
   "emoji.coffee",
   "facepalm.coffee",
   "fuck_yeah_nouns.coffee",
@@ -36,10 +34,8 @@
   "responders.coffee",
   "swanson.coffee",
   "tweet-content.coffee",
-  "urban.coffee",
   "url.coffee",
   "wat.coffee",
-  "whoisout.coffee",
   "wikipedia.coffee",
   "yelp.coffee"
 ]
