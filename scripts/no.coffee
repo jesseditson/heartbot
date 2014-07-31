@@ -9,5 +9,5 @@ noQuotes = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /.*(no|nope|nay|nah).*/i, (msg) ->
+  robot.hear /^(no|nope|nay|nah)$/i, (msg) ->
     msg.send msg.random noQuotes
