@@ -37,5 +37,6 @@
   "url.coffee",
   "wat.coffee",
   "wikipedia.coffee",
+  "xkcd.coffee",
   "yelp.coffee"
 ]
