@@ -41,5 +41,5 @@ var sendTweet = function(msg){
 }
 
 module.exports = function(robot){
-  robot.hear(/NSA/i,sendTweet);
+  robot.hear(/\bNSA\b/i,sendTweet);
 }
