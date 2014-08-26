@@ -8,7 +8,7 @@ module.exports = function(robot) {
   var cleverbot = new Cleverbot();
   matchLast(robot,function(msg){
     silly(msg)
-    cleverbot.write(msg.match[1], function(a){
+    cleverbot.write(msg.match[1] + msg.match[2], function(a){
       msg.send(a.message);
     });
   });

@@ -20,7 +20,7 @@ module.exports = (robot) ->
   matchLast robot, (msg) ->
     silly msg, true
     msg.send msg.random lookup_messages
-    Wolfram.query msg.match[1], (e, result) ->
+    Wolfram.query msg.match[1] + msg.match[2], (e, result) ->
       if result and result.length > 0
         msg.send result[1]['subpods'][0]['text']
       else
