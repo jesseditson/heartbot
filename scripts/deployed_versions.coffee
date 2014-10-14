@@ -6,7 +6,7 @@ urls = {
 }
 
 module.exports = (robot) ->
-  robot.respond /(\w+)* deployed (version|commit|revision)/i, (msg) ->
+  robot.respond /(\w+)* ?deployed (version|commit|revision)/i, (msg) ->
     app = msg.match[1] || "site"
     msg.http(urls[app]).get() (err, res, body) ->
       msg.send "#{app} deployed commit is #{body}"
