@@ -2,6 +2,7 @@
 #
 # trigger it with `product (people|guys)`
 #
+silly = require '../lib/silly'
 interestingImages = [
   "http://image.shutterstock.com/display_pic_with_logo/463219/463219,1284343432,1/stock-photo-business-meeting-two-businessmen-in-suits-working-together-in-boardroom-60862144.jpg",
   "http://www.opusmeetingrooms.com/wp-content/uploads/2013/05/meeting-rooms-for-traveling-professionals.jpg",
@@ -17,4 +18,5 @@ interestingImages = [
 
 module.exports = (robot) ->
   robot.hear /(product (people|guys))|(a lot of|so many) meetings/i, (msg) ->
+    silly msg
     msg.send msg.random interestingImages

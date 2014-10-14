@@ -19,9 +19,9 @@ lookup_messages = [
 module.exports = (robot) ->
   matchLast robot, (msg) ->
     silly msg, true
-    msg.send msg.random lookup_messages
+    # msg.send msg.random lookup_messages
     Wolfram.query msg.match[1] + msg.match[2], (e, result) ->
       if result and result.length > 0
         msg.send result[1]['subpods'][0]['text']
-      else
-        msg.send "I don't know."
+      # else
+      #   msg.send "I don't know."
