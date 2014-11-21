@@ -72,6 +72,7 @@ images = [
 ]
 
 module.exports = (robot) ->
+  return;
   robot.hear /.*(fail).*/i, (msg) ->
     silly msg
     msg.send msg.random images
