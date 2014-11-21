@@ -33,7 +33,7 @@ images = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /(test|production|staging)/i, (msg) ->
+  robot.hear /(production|staging)/i, (msg) ->
     silly msg
     msg.send msg.random images
     msg.done = true
